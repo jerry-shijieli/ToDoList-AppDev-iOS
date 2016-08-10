@@ -14,7 +14,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
     
     @IBAction func setLabelText(sender: UIButton) {
-        nameLabel.text = nameTextField.text
+        //nameLabel.text = nameTextField.text
     }
     
     override func viewDidLoad() {
