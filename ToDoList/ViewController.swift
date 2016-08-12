@@ -9,13 +9,19 @@
 import UIKit
 
 class ViewController: UIViewController {
+    var item = Item?()
 
+    @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var nameLabel: UILabel!
     
-    @IBAction func setLabelText(sender: UIButton) {
-        //nameLabel.text = nameTextField.text
+    @IBAction func cancel(sender: UIBarButtonItem) {
+        dismissViewControllerAnimated(true, completion: nil)
     }
+    
+    /*@IBAction func setLabelText(sender: UIButton) {
+        //nameLabel.text = nameTextField.text
+    }*/
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,5 +34,11 @@ class ViewController: UIViewController {
     }
 
 
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if saveButton === sender {
+            let name = nameTextField.text ?? ""
+            item = Item(name: name)
+        }
+    }
 }
 

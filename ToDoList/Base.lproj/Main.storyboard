@@ -98,15 +98,25 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="New Item" id="lfv-RT-OAS">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="jq8-9h-YXV"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="UfY-qo-K5h"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="jq8-9h-YXV">
+                            <connections>
+                                <action selector="cancel:" destination="BYZ-38-t0r" id="7sL-Fb-WiF"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="UfY-qo-K5h">
+                            <connections>
+                                <segue destination="IuI-oB-ZFg" kind="unwind" unwindAction="unwindToList:" id="VU6-Oq-oZm"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="nameLabel" destination="DCZ-ub-53k" id="y1G-HZ-ado"/>
                         <outlet property="nameTextField" destination="Tdo-65-DAE" id="6CO-zm-as8"/>
+                        <outlet property="saveButton" destination="UfY-qo-K5h" id="rCW-5D-UWr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <exit id="IuI-oB-ZFg" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2014" y="404"/>
         </scene>
