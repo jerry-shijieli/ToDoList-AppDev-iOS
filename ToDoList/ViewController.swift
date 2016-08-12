@@ -16,7 +16,12 @@ class ViewController: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
     
     @IBAction func cancel(sender: UIBarButtonItem) {
-        dismissViewControllerAnimated(true, completion: nil)
+        let isInAddMode = presentingViewController is UINavigationController
+        if isInAddMode {
+            dismissViewControllerAnimated(true, completion: nil)
+        } else {
+            navigationController!.popViewControllerAnimated(true)
+        }
     }
     
     /*@IBAction func setLabelText(sender: UIButton) {
@@ -26,6 +31,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        if let item = item{
+            nameTextField.text = item.name
+        }
     }
 
     override func didReceiveMemoryWarning() {

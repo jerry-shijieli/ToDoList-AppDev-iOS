@@ -19,10 +19,16 @@ class ItemTableViewController: UITableViewController {
         let srcViewCon = sender.sourceViewController as? ViewController
         let item = srcViewCon?.item
         if (srcViewCon != nil && item?.name != ""){
-            // Add a new item
-            let newIndexPath = NSIndexPath(forRow: items.count, inSection: 0)
-            items.append(item!)
-            tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
+            if let selectedIndexPath = tableView.indexPathForSelectedRow{
+                // Update an existing item
+                items[selectedIndexPath.row] = item!
+                tableView.reloadRowsAtIndexPaths([selectedIndexPath], withRowAnimation: .None)
+            } else {
+                // Add a new item
+                let newIndexPath = NSIndexPath(forRow: items.count, inSection: 0)
+                items.append(item!)
+                tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
+            }
         }
     }
 
@@ -102,14 +108,25 @@ class ItemTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "ShowDetail"{
+            let detailVC = segue.destinationViewController as! ViewController
+            // Get the cell that generated the segue
+            if let selectedCell = sender as? ItemTableViewCell {
+                let indexPath = tableView.indexPathForCell(selectedCell)!
+                let selectedItem = items[indexPath.row]
+                detailVC.item = selectedItem
+            }
+        } else if segue.identifier == "AddItem" {
+            // No code
+        }
     }
-    */
+    
 
 }

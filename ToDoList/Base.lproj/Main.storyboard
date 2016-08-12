@@ -32,6 +32,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="nameLabel" destination="T9B-3J-AV5" id="wa1-8K-VRT"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="ShowDetail" id="dEa-7U-brf"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -154,7 +155,10 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="egs-cO-pqH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1202" y="404"/>
+            <point key="canvasLocation" x="1206" y="793"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="dEa-7U-brf"/>
+    </inferredMetricsTieBreakers>
 </document>
